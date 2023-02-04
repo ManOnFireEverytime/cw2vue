@@ -213,11 +213,11 @@ const app = new Vue({
     },
   },
   computed: {
-    // cartItemCount: function () {
-    //   if (this.cart.length > 0)
-    //     return this.cart.reduce((total, item) => total + item.space, 0);
-    //   return 0;
-    // },
+    cartItemCount: function () {
+      if (this.cart.length > 0)
+        return this.cart.reduce((total, item) => total + item.space, 0);
+      return 0;
+    },
   },
   watch: {
     searchText: {
