@@ -4,8 +4,8 @@ const app = new Vue({
     lessons: [],
     onHome: true,
     ascending: true,
-    url: "http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections",
-    urls: "http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com",
+    url: "https://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections",
+    urls: "https://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com",
     sortBy: "subject",
     cart: [],
     searchText: "",
@@ -23,7 +23,7 @@ const app = new Vue({
   // fetching the lessons in json from the get path
   created: function () {
     fetch(
-      "http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/lessons"
+      "https://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/lessons"
     )
       .then((response) => response.json())
       .then((lessons) => {
@@ -55,7 +55,7 @@ const app = new Vue({
     // },
     createNewOrder(order) {
       fetch(
-        "http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/orders",
+        "https://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/orders",
         {
           method: "POST", //set the HTTP method as "POST"
           headers: {
@@ -73,7 +73,7 @@ const app = new Vue({
     },
     async updateLesson({ lesson_id, space }) {
       try {
-        const url = `http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/lessons/${lesson_id}`;
+        const url = `https://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/lessons/${lesson_id}`;
 
         fetch(url, {
           method: "PUT",
