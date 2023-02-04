@@ -219,16 +219,16 @@ const app = new Vue({
       return 0;
     },
   },
-  // watch: {
-  //   searchText: {
-  //     handler(val) {
-  //       // if (val.trim() != '') {
-  //       //   this.getLessons();
-  //       // } else {
-  //       //   this.lessons
-  //       // }
-  //       this.getLessons();
-  //     },
-  //   },
-  // },
+  watch: {
+    searchText: {
+      handler(val) {
+        // if (val.trim() != '') {
+        //   this.getLessons();
+        // } else {
+        //   this.lessons
+        // }
+        this.getLessons();
+      },
+    },
+  },
 });
