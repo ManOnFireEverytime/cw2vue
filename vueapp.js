@@ -4,8 +4,8 @@ const app = new Vue({
     lessons: [],
     onHome: true,
     ascending: true,
-    url: "http://localhost:3000/collections",
-    urls: "http://localhost:3000",
+    url: "http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections",
+    urls: "http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com",
     sortBy: "subject",
     cart: [],
     searchText: "",
@@ -22,7 +22,9 @@ const app = new Vue({
   },
   // fetching the lessons in json from the get path
   created: function () {
-    fetch("http://localhost:3000/collections/products")
+    fetch(
+      "http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/lessons"
+    )
       .then((response) => response.json())
       .then((lessons) => {
         this.lessons = lessons;
@@ -33,7 +35,7 @@ const app = new Vue({
   methods: {
     async getLessons() {
       try {
-        const url = `${this.url}/products/search/${this.searchText}`;
+        const url = `${this.url}/lessons/search/${this.searchText}`;
 
         const response = await fetch(url);
 
@@ -43,7 +45,7 @@ const app = new Vue({
       }
     },
     // getLessons() {
-    //   const url = `${this.url}/products/?search=${this.searchText}`;
+    //   const url = `${this.url}/lessons/?search=${this.searchText}`;
 
     //   fetch(url)
     //     .then((response) => response.json())
@@ -52,23 +54,26 @@ const app = new Vue({
     //     });
     // },
     createNewOrder(order) {
-      fetch("http://localhost:3000/collections/orders", {
-        method: "POST", //set the HTTP method as "POST"
-        headers: {
-          "Content-Type": "application/json", //set the data type as JSON
-        },
-        body: JSON.stringify(order), //need to stringigy the JSON
-      }).then(function (response) {
+      fetch(
+        "http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/orders",
+        {
+          method: "POST", //set the HTTP method as "POST"
+          headers: {
+            "Content-Type": "application/json", //set the data type as JSON
+          },
+          body: JSON.stringify(order), //need to stringigy the JSON
+        }
+      ).then(function (response) {
         response.json().then(function (json) {
           // alert("Success: " + json.acknowledged);
           console.log("Success: " + json.acknowledged);
-          // webstore.products.push(order);
+          // webstore.lessons.push(order);
         });
       });
     },
     async updateLesson({ lesson_id, space }) {
       try {
-        const url = `http://localhost:3000/collections/products/${lesson_id}`;
+        const url = `http://webstoreapp-env.eba-yi2fch33.eu-west-2.elasticbeanstalk.com/collections/lessons/${lesson_id}`;
 
         fetch(url, {
           method: "PUT",
